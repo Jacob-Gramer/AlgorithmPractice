@@ -5,16 +5,12 @@ Selection sort operates by selecting the smallest (if sorting by ascending) elem
 const selectionSort = (array) => {
   // iterate over array
   array.forEach((item, i) => {
-    // declare a variable, min
     let min = i;
-    // iterate over array from j = i
     for (let j=i + 1; j<array.length; j++) {
-      // if array[j] is less than min
       if (array[j] < array[min]) {
         min = j;
       }
     }
-    // if array[i] is greater than min
     if (min !== i) {
       let temp = array[i];
       array[i] = array[min];
