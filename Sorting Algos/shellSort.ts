@@ -16,6 +16,6 @@ function sort(arr: number[]): number[] {
   return arr;
 }
 
-let arr = [12, 34, 54, 2, 3];
-arr = sort(arr);
-console.log(arr);
+// let arr = [12, 34, 54, 2, 3];
+// arr = sort(arr);
+// console.log(arr);
