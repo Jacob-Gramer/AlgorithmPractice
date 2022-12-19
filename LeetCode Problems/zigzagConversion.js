@@ -1,17 +1,31 @@
-var convert = function(s, numRows) {
-    debugger;
-    if (numRows <= 1 || s.length < numRows) return s;
-    let zigzag = [];
-    for (let i=0; i<numRows; i++) {
-        let split = 2 * (numRows - (i + 1)) || 2 * (numRows - 1);
-        let j = i;
-        while (j < s.length) {
-            zigzag.push(s[j]);
-            j += split;
-        }
+var getStep = function getStep(rows, row, step) {
+    var origin = 2*(rows-1);
+    var base = (row === 0 || row === rows-1) ? origin : origin - 2*row;
+    var flip = (row === 0 || row === rows-1) ? origin : origin - base;
+
+    return (step % 2 === 0) ? base : flip;
+  }
+
+  var convert = function convert(str, rows) {
+    if (rows <= 1 || rows > str.length) { return str; }
+
+    var result = '';
+    for (var i = 0; i < rows; i++) {
+
+      var step = 0;
+      var j = i;
+      var rowResult = '';
+
+      while (j < str.length) {
+        rowResult += str[j];
+        j += getStep(rows, i, step);
+        step++;
+      }
+
+      result += rowResult;
     }
-    return zigzag.join('');
-};
+    return result;
+  }
 
 let s = "PAYPALISHIRING";
 
